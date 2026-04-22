@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Luxère Collections</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .section-collection { padding: 64px 0; background: var(--white, #fff); }
+    .collection-header { text-align: center; margin-bottom: 48px; }
+    .collection-title { font-size: 2.8rem; font-family: 'Cormorant Garamond', serif; margin: 0; }
+    .collection-desc { color: var(--muted, #666); font-size: 1.1rem; margin: 12px 0 0; }
+    .collection-sections { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; }
+    .collection-section { background: #f8f6f3; border-radius: 18px; box-shadow: 0 2px 16px rgba(0,0,0,0.04); padding: 32px 28px; width: 340px; transition: transform 0.2s, box-shadow 0.2s; position: relative; }
+    .collection-section:hover { transform: translateY(-8px) scale(1.03); box-shadow: 0 8px 32px rgba(0,0,0,0.10); }
+    .section-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .section-title { font-size: 1.4rem; font-family: 'Cormorant Garamond', serif; margin: 0 0 10px; }
+    .section-products { list-style: none; padding: 0; margin: 0; }
+    .section-products li { margin: 8px 0; font-size: 1.05rem; display: flex; align-items: center; }
+    .section-products li::before { content: '•'; color: var(--rose, #e7b6a7); margin-right: 8px; font-size: 1.2em; }
+    .explore-link { display: inline-block; margin-top: 18px; color: var(--rose, #e7b6a7); text-decoration: underline; font-weight: 500; transition: color 0.2s; }
+    .explore-link:hover { color: #b97c6d; }
+    .collection-cta { text-align: center; margin-top: 56px; }
+    .btn-collection { background: var(--rose, #e7b6a7); color: #fff; border: none; border-radius: 24px; padding: 16px 48px; font-size: 1.1rem; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: background 0.2s; }
+    .btn-collection:hover { background: #b97c6d; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-logo">LU<span>X</span>ÈRE</div>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="#skincare">Skincare</a></li>
+      <li><a href="#makeup">Makeup</a></li>
+      <li><a href="#fragrance">Fragrance</a></li>
+      <li><a href="#bodycare">Body Care</a></li>
+      <li><a href="#">Collections</a></li>
+    </ul>
+    <div class="nav-icons">
+      <button class="nav-icon-btn" title="Search">🔍</button>
+      <button class="nav-icon-btn" title="Account">👤</button>
+      <button class="nav-icon-btn" title="Cart">🛒</button>
+    </div>
+  </nav>
+  <!-- BEAUTY PRODUCT SLIDER -->
+  <div class="slider-container">
+    <div class="slider" id="productSlider">
+      <div class="slide active">
+        <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?auto=format&w=600&q=85" alt="Radiance Renewal Sérum"/>
+        <div class="slide-caption">Radiance Renewal Sérum</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&w=600&q=85" alt="Velvet Rose Face Cream"/>
+        <div class="slide-caption">Velvet Rose Face Cream</div>
+      </div>
+      <div class="slide">
+        <img src="https://cdn.pixabay.com/photo/2021/05/02/14/53/perfume-6223754_1280.jpg" alt="Midnight Bloom Eau de Parfum"/>
+        <div class="slide-caption">Midnight Bloom Eau de Parfum</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?auto=format&w=600&q=85" alt="Pure Green Clay Mask"/>
+        <div class="slide-caption">Pure Green Clay Mask</div>
+      </div>
+      <div class="slide">
+        <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&w=900&q=80" alt="Luminous Skin Essentials"/>
+        <div class="slide-caption">Luminous Skin Essentials</div>
+      </div>
+    </div>
+    <button class="slider-btn prev" id="sliderPrev">&#10094;</button>
+    <button class="slider-btn next" id="sliderNext">&#10095;</button>
+    <div class="slider-dots" id="sliderDots"></div>
+  </div>
+  <style>
+    .slider-container { max-width: 700px; margin: 40px auto 0; position: relative; }
+    .slider { position: relative; overflow: hidden; border-radius: 18px; }
+    .slide { display: none; position: absolute; width: 100%; height: 340px; top: 0; left: 0; transition: opacity 0.6s; }
+    .slide img { width: 100%; height: 340px; object-fit: cover; border-radius: 18px; }
+    .slide.active { display: block; position: relative; opacity: 1; z-index: 2; }
+    .slide-caption { position: absolute; bottom: 18px; left: 24px; background: rgba(255,255,255,0.85); color: #b97c6d; padding: 8px 18px; border-radius: 16px; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); border: none; border-radius: 50%; width: 38px; height: 38px; font-size: 1.5rem; color: #b97c6d; cursor: pointer; z-index: 3; box-shadow: 0 2px 8px rgba(0,0,0,0.07); transition: background 0.2s; }
+    .slider-btn:hover { background: #e7b6a7; color: #fff; }
+    .slider-btn.prev { left: 12px; }
+    .slider-btn.next { right: 12px; }
+    .slider-dots { position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%); display: flex; gap: 8px; z-index: 4; }
+    .slider-dot { width: 12px; height: 12px; border-radius: 50%; background: #e7b6a7; opacity: 0.4; border: none; cursor: pointer; transition: opacity 0.2s; }
+    .slider-dot.active { opacity: 1; background: #b97c6d; }
+  </style>
+  <script>
+    // Simple slider logic
+    (function() {
+      var slides = document.querySelectorAll('.slide');
+      var dotsContainer = document.getElementById('sliderDots');
+      var current = 0;
+      var timer;
+      function showSlide(n) {
+        slides.forEach(function(slide, i) {
+          slide.classList.toggle('active', i === n);
+        });
+        Array.from(dotsContainer.children).forEach(function(dot, i) {
+          dot.classList.toggle('active', i === n);
+        });
+        current = n;
+      }
+      function next() { showSlide((current + 1) % slides.length); }
+      function prev() { showSlide((current - 1 + slides.length) % slides.length); }
+      // Dots
+      slides.forEach(function(_, i) {
+        var dot = document.createElement('button');
+        dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+        dot.addEventListener('click', function() { showSlide(i); });
+        dotsContainer.appendChild(dot);
+      });
+      document.getElementById('sliderNext').onclick = function() { next(); resetAuto(); };
+      document.getElementById('sliderPrev').onclick = function() { prev(); resetAuto(); };
+      function auto() { timer = setInterval(next, 4000); }
+      function resetAuto() { clearInterval(timer); auto(); }
+      auto();
+    })();
+  </script>
+  <section class="section-collection">
+    <div class="collection-header">
+      <h1 class="collection-title">Explore Our Skincare Collections</h1>
+      <p class="collection-desc">Curated rituals for every skin need. Discover your perfect match from our luxury skincare collections.</p>
+    </div>
+    <div class="collection-sections">
+      <div class="collection-section" id="skincare">
+        <div class="section-icon">💧</div>
+        <h2 class="section-title">Hydration Heroes</h2>
+        <ul class="section-products">
+          <li>Hydra-Boost Cleanser</li>
+          <li>Deep Dew Moisturizer</li>
+          <li>Plumping Hyaluronic Serum</li>
+        </ul>
+        <a class="explore-link" href="#">See all Hydration products</a>
+      </div>
+      <div class="collection-section" id="antiaging">
+        <div class="section-icon">⏳</div>
+        <h2 class="section-title">Age-Defying Rituals</h2>
+        <ul class="section-products">
+          <li>Retinol Renewal Cream</li>
+          <li>Firming Peptide Serum</li>
+          <li>Overnight Youth Mask</li>
+        </ul>
+        <a class="explore-link" href="#">See all Anti-Aging products</a>
+      </div>
+      <div class="collection-section" id="brightening">
+        <div class="section-icon">✨</div>
+        <h2 class="section-title">Radiance & Brightening</h2>
+        <ul class="section-products">
+          <li>Vitamin C Glow Drops</li>
+          <li>Radiance Renewal Serum</li>
+          <li>Illuminating Day Cream</li>
+        </ul>
+        <a class="explore-link" href="#">See all Brightening products</a>
+      </div>
+      <div class="collection-section" id="soothing">
+        <div class="section-icon">🌿</div>
+        <h2 class="section-title">Soothing & Calming</h2>
+        <ul class="section-products">
+          <li>Calm Restore Cleanser</li>
+          <li>Botanical Recovery Balm</li>
+          <li>Redness Relief Serum</li>
+        </ul>
+        <a class="explore-link" href="#">See all Soothing products</a>
+      </div>
+      <div class="collection-section" id="bodycare">
+        <div class="section-icon">🛁</div>
+        <h2 class="section-title">Body Care Rituals</h2>
+        <ul class="section-products">
+          <li>Silk Touch Body Lotion</li>
+          <li>Botanical Body Scrub</li>
+          <li>Glow Elixir Oil</li>
+        </ul>
+        <a class="explore-link" href="#">See all Body Care</a>
+      </div>
+    </div>
+    <div class="collection-cta">
+      <button class="btn-collection" onclick="window.location.href='index.html#categories'">Shop Full Collection</button>
+    </div>
+  </section>
+  <footer style="margin-top:64px;">
+    <div style="text-align:center;color:#888;font-size:14px;">© 2026 Luxère Beauty. All rights reserved.</div>
+  </footer>
+  <script>
+    // Add simple interactivity: highlight section on hover
+    document.querySelectorAll('.collection-section').forEach(function(section) {
+      section.addEventListener('mouseenter', function() {
+        this.style.boxShadow = '0 12px 36px rgba(183,124,109,0.13)';
+      });
+      section.addEventListener('mouseleave', function() {
+        this.style.boxShadow = '';
+      });
+    });
+    // Animate button
+    document.querySelector('.btn-collection').addEventListener('mouseenter', function() {
+      this.style.transform = 'scale(1.06)';
+    });
+    document.querySelector('.btn-collection').addEventListener('mouseleave', function() {
+      this.style.transform = '';
+    });
+  </script>
+</body>
+</html>
